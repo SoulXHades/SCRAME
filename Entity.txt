@@ -1,0 +1,74 @@
+[Faculty]
+- facName: string
+- profList: ArrayList<Professor>
+- studList: ArrayList<Student>
+- courseList: ArrayList<Course>
++ Faculty(in facName: string)
++ getProfList(): ArrayList<Professor>
++ getStudList(): ArrayList<Student>
++ getCourseList(): ArrayList<Course>
++ addProf(out prof: Professor)			//add prof to list of prof
++ addStud(out stud: Student)			//add student to list of students
++ addCourse(): out Course			//composition, course is part of faculty ???
+
+[Student]
+- adminNumber: string
+- studName: string
+- year: int
+- GPA: float
++ Student(in adminNumber:string, in name:string)
++ getAdminNumber(): string
++ getName(): string
++ getYear(): int
++ getGPA(): float
++ setYear(newYear: int)
++ setGPA(gpa: float)
+
+[Professor]
+- staffNumber: string
+- staffName: string
+- inFaculty: ArrayList<Faculty>
++ Professor(in staffNumber:string, in staffName: string)
++ getStaffNumber(): string
++ getStaffName(): string
++ addFaculty(fac: Faculty)					//aggregation
+
+[Course]
+- courseCode: string
+- courseName: string
+- courseCoordinator: Professor
+- lectList: ArrayList<Lecture>
+- tutList: ArrayList<Tutorial>
+- labList: ArrayList<Lab>
+- examWeightage: int
+- courseWeightage: int
+- assignment: int
+- classPart: int
++ Course(in courseCode: string, in courseName: string)
++ getCourseCode(): string
++ getCourseName(): string
++ getCourseCoordinator(): string
++ getLecture(): ArrayList<Lecture>
++ getTutorial(): ArrayList<Tutorial>
++ getLab(): ArrayList<Lab>
++ getExamWeightage(): int
++ getCourseWeightage(): int
++ setCourseCoordinator(in name: string)
+//Course not done yet for methods
+
+[Lecture]
+- groupName: string
+- students: ArrayList<Student>
++ Lecture(in groupName: string)
++ getGroupName: string
++ getGroupName(): string
++ getStudents(): ArrayList<Student>
++ addStudent(in newStud: Student)			//aggregation
+
+[Tutorial extends Lecture]
+- vancacy: int
++ Tutorial(in groupName: string)
++ getVancacy(): int
+
+[Lab extends Tutorial]
++ Lab(in groupName: string)
